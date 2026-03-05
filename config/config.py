@@ -19,9 +19,10 @@ CITIES = [
 
 # Database Configuration
 DB_CONFIG = {
-    "host": os.getenv("DB_HOST", "localhost"),
+    "host": os.getenv("DB_HOST", "172.29.112.1"),
     "port": os.getenv("DB_PORT", 5432),
     "dbname": os.getenv("DB_NAME", "weather_pipeline"),
     "user": os.getenv("DB_USER", "postgres"),
-    "password": os.getenv("Ln@jy")
+    "password": os.getenv("DB_PASSWORD"),
+    "options": "-c search_path=public"
 }
