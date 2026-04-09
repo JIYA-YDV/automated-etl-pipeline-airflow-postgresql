@@ -1,5 +1,6 @@
 # Automated ETL Pipeline — Weather Data | Airflow + PostgreSQL
 
+Python 3.10 | Apache Airflow 2.8.1 | PostgreSQL | pytest
 ![Python](https://img.shields.io/badge/Python-3.10-blue)
 ![Apache Airflow](https://img.shields.io/badge/Apache%20Airflow-2.8.1-green)
 ![PostgreSQL](https://img.shields.io/badge/PostgreSQL-18-blue)
@@ -30,7 +31,7 @@ OpenWeatherMap API
 |------|---------|
 | Python 3.10 | Core pipeline logic |
 | Apache Airflow 2.8.1 | Orchestration + scheduling |
-| PostgreSQL 18 | Data storage |
+| PostgreSQL 18.1 | Data storage |
 | WSL2 + Ubuntu 22.04 | Linux environment on Windows |
 | OpenWeatherMap API | Live weather data source |
 | pytest | Unit testing |
@@ -82,11 +83,18 @@ transformed_weather  -- Cleaned, converted data
 quality_logs         -- Per-field validation results
 pipeline_logs        -- Run history and status
 ```
-
+## Sample Analytics
+With the data loaded into PostgreSQL, we can answer business questions such as:
+- What is the average temperature trend per city over the last 24 hours?
+- Which city experienced the highest humidity fluctuations?
+- Identification of "Extreme Weather" events based on custom thresholds.
+  
 ## Screenshots
 ### Airflow DAG — All Tasks Successful
 <img width="1914" height="1024" alt="Screenshot 2026-03-05 223715" src="https://github.com/user-attachments/assets/4b046f07-6848-445d-9f9f-82a634549773" />
 <img width="1905" height="907" alt="Airflow DAG running successfully " src="https://github.com/user-attachments/assets/3929112d-1608-46ac-a95c-f80462aa71d0" />
+<img width="1907" height="915" alt="image" src="https://github.com/user-attachments/assets/e72011f6-56d9-4f86-b7a3-10c518514c60" />
+
 
 ### PostgreSQL Data
 <img width="1917" height="950" alt="image" src="https://github.com/user-attachments/assets/74a58448-fe84-4d5f-ae24-3625a73c160b" />
@@ -101,7 +109,7 @@ pipeline_logs        -- Run history and status
 ### Setup
 ```bash
 # Clone repo
-git clone https://github.com//JIYA-YDV/automated-etl-pipeline-airflow-postgresql
+git clone https://github.com/JIYA-YDV/automated-etl-pipeline-airflow-postgresql
 cd automated-etl-pipeline-airflow-postgresql
 
 # Create virtual environment
@@ -122,11 +130,6 @@ airflow db init
 # Start Airflow
 airflow webserver --port 8080 &
 airflow scheduler &
-```
-
-### Run Pipeline Manually
-```bash
-python src/load.py
 ```
 
 ### Run Tests
