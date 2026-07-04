@@ -145,4 +145,4 @@ pytest tests/ -v
 - Configured WSL2 + Linux environment for data engineering workflow
 
 ## Author
-Jiya Yadav | MSc IT | Aspiring Data Engineer
+Jiya Yadav | MSc IT | Aspiring AI Engineer
